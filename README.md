@@ -3,9 +3,9 @@
 
 ## Problem Statement
 Given a list of nodes in a cluster, go and poll the metrics via JMX from each node. Find out the following: 
-1. Identify slow running queries (queries that take more than 1 sec to execute) and GC pauses for more than 5 sec, and append them in a file every 15 min. 
-2. Record error rates for reads and writes per table and per node. Append them in a file every 10 min. 
-3. Record latency (averages and totals) of range, read, and write operations per second at the server level. Append them in a file every 5 min. 
+1) Identify slow running queries (queries that take more than 1 sec to execute) and GC pauses for more than 5 sec, and append them in a file every 15 min. 
+2) Record error rates for reads and writes per table and per node. Append them in a file every 10 min. 
+3) Record latency (averages and totals) of range, read, and write operations per second at the server level. Append them in a file every 5 min. 
 
 
 ## Prerequisite --
@@ -17,11 +17,10 @@ Given a list of nodes in a cluster, go and poll the metrics via JMX from each no
 
 
 ## To Deploy Application --
-copy the  jar to server
-
-The executable JAR file is now available in the target directory and we may start up the application by executing the following command on the command line:
-
-$ java -jar your-app.jar
+1) Copy the jar to server to particular directory
+2) From command line move to that particular directory where jar is copied
+3) Execute the following command on the command line:
+    $ java -jar your-app.jar
 
 
 
