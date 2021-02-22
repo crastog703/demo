@@ -7,7 +7,7 @@ for cassandra to get read ,write and range latency ,gc pauses ,slow query and er
 
 Refrences
 
-1) https://www.datadoghq.com/blog/how-to-collect-cassandra-metrics/#collecting-metrics-with-jconsole
+1)https://www.datadoghq.com/blog/how-to-collect-cassandra-metrics/#collecting-metrics-with-jconsole
 
 the recent read latency would be calculated from the deltas of those two metrics:
 
