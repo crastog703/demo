@@ -1,7 +1,6 @@
-# demo
-for cassandra to get read ,write and range latency ,gc pauses ,slow query and error rate
+# For cassandra to get read ,write and range latency ,gc pauses ,slow query and error rate
 
-Prerequisite
+Prerequisite --
 1) Cassandra Jmx connection should be enable (configure each node to application.properties)
 2) Jmx port should be accessible from where application is deployed
 3) For checking slow query cassandra debug log  of each node should be accessible from where application is deployed
@@ -9,7 +8,7 @@ Prerequisite
 
 
 
-To Deploy Application
+To Deploy Application --
 copy the  jar to server
 
 The executable JAR file is now available in the target directory and we may start up the application by executing the following command on the command line:
@@ -20,7 +19,7 @@ https://www.baeldung.com/spring-boot-app-as-a-service
 
 
 
-Refrences
+References --
 
 1)https://www.datadoghq.com/blog/how-to-collect-cassandra-metrics/#collecting-metrics-with-jconsole
 
