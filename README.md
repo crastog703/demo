@@ -1,4 +1,4 @@
-# Cassandra's to get Read, Write and Range latency, GC Pauses, Slow query and Error Rate
+# Cassandra: Get Read, Write and Range latency, GC Pauses, Slow query and Error Rate
 
 
 ## Problem Statement
