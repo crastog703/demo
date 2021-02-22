@@ -28,17 +28,17 @@
 
 ## References --
 
-    1) <https://www.datadoghq.com/blog/how-to-collect-cassandra-metrics/#collecting-metrics-with-jconsole>
+    1) https://www.datadoghq.com/blog/how-to-collect-cassandra-metrics/#collecting-metrics-with-jconsole
 
        the recent read latency would be calculated from the deltas of those two metrics:
 
        readLatency = (ReadTotalLatency1−ReadTotalLatency0)/(ReadLatency1−ReadLatency0)
 
-    2) <https://cassandra.apache.org/doc/latest/operating/metrics.html>
+    2) https://cassandra.apache.org/doc/latest/operating/metrics.html
 
-    3) <https://community.datastax.com/questions/4969/identify-slow-queries.html#:~:text=Slow%20query%20logging%20was%20added,slow_query_log_timeout_in_ms%3A%20500>
+    3) https://community.datastax.com/questions/4969/identify-slow-queries.html#:~:text=Slow%20query%20logging%20was%20added,slow_query_log_timeout_in_ms%3A%20500
 
        to collect slow query in cassandra
 
-    4) [https://www.baeldung.com/spring-boot-app-as-a-service] to deploy application
-    5) [I'm an inline-style link](https://www.google.com)
+    4) https://www.baeldung.com/spring-boot-app-as-a-service to deploy application
+
