@@ -41,3 +41,4 @@
        to collect slow query in cassandra
 
     4) [https://www.baeldung.com/spring-boot-app-as-a-service] to deploy application
+    5) [I'm an inline-style link](https://www.google.com)
