@@ -22,6 +22,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
 @Component
+/**
+ *
+ */
 public class ErrorRateScheduler {
     public static Map<Object, Object> errorMap = new HashMap<>();
     @Value("#{'${hosts}'.split(',')}")
@@ -57,6 +60,19 @@ public class ErrorRateScheduler {
         }
     }
 
+    /**
+     *
+     * @param host
+     * @param port
+     * @throws IOException
+     * @throws MalformedObjectNameException
+     * @throws InstanceNotFoundException
+     * @throws IntrospectionException
+     * @throws ReflectionException
+     * @throws MBeanException
+     * @throws AttributeNotFoundException
+     * @throws InterruptedException
+     */
     private void errorRateData(String host, String port) throws IOException, MalformedObjectNameException, InstanceNotFoundException, IntrospectionException, ReflectionException, MBeanException, AttributeNotFoundException, InterruptedException {
         MBeanServerConnection mbeanConn = CommonUtility.getmBeanServerConnection(host, port);
         List<ErrorRate> result = new ArrayList<>();
@@ -91,7 +107,20 @@ public class ErrorRateScheduler {
 
     }
 
-
+    /**
+     *
+     * @param mbeanConn
+     * @param result
+     * @param resultMap
+     * @param node
+     * @throws MalformedObjectNameException
+     * @throws InstanceNotFoundException
+     * @throws IntrospectionException
+     * @throws ReflectionException
+     * @throws IOException
+     * @throws MBeanException
+     * @throws AttributeNotFoundException
+     */
     public void getFailureMetric(MBeanServerConnection mbeanConn, List<ErrorRate> result, Map<Object, Object> resultMap, String node) throws MalformedObjectNameException, InstanceNotFoundException, IntrospectionException, ReflectionException, IOException, MBeanException, AttributeNotFoundException {
         try {
 
@@ -122,6 +151,19 @@ public class ErrorRateScheduler {
         }
     }
 
+    /**
+     *
+     * @param mbeanConn
+     * @param resultMap
+     * @param node
+     * @param mbeanWriteFailure
+     * @param errorRate
+     * @throws MBeanException
+     * @throws AttributeNotFoundException
+     * @throws InstanceNotFoundException
+     * @throws ReflectionException
+     * @throws IOException
+     */
     private void getWriteFailureData(MBeanServerConnection mbeanConn, Map<Object, Object> resultMap, String node, ObjectName mbeanWriteFailure, ErrorRate errorRate) throws MBeanException, AttributeNotFoundException, InstanceNotFoundException, ReflectionException, IOException {
         Long writeFailure = (Long) mbeanConn.getAttribute(mbeanWriteFailure, Constants.COUNT);
 
@@ -132,6 +174,20 @@ public class ErrorRateScheduler {
         resultMap.put(node + Constants.PREVIOUS_WRITE_FAILURE, writeFailure);
     }
 
+    /**
+     *
+     * @param mbeanConn
+     * @param resultMap
+     * @param node
+     * @param mbeanReadFailure
+     * @param mbeanWriteFailure
+     * @param errorRate
+     * @throws MBeanException
+     * @throws AttributeNotFoundException
+     * @throws InstanceNotFoundException
+     * @throws ReflectionException
+     * @throws IOException
+     */
     private void getReadFailureData(MBeanServerConnection mbeanConn, Map<Object, Object> resultMap, String node, ObjectName mbeanReadFailure, ObjectName mbeanWriteFailure, ErrorRate errorRate) throws MBeanException, AttributeNotFoundException, InstanceNotFoundException, ReflectionException, IOException {
         Long readFailure = (Long) mbeanConn.getAttribute(mbeanReadFailure, Constants.COUNT);
 

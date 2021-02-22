@@ -22,6 +22,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
 @Component
+/**
+ *
+ */
 public class LatencyScheduler {
     public static Map<Object, Object> resultMap = new HashMap<>();
     @Value("#{'${hosts}'.split(',')}")
@@ -54,6 +57,19 @@ public class LatencyScheduler {
 
     }
 
+    /**
+     *
+     * @param host
+     * @param port
+     * @throws IOException
+     * @throws MalformedObjectNameException
+     * @throws InstanceNotFoundException
+     * @throws IntrospectionException
+     * @throws ReflectionException
+     * @throws MBeanException
+     * @throws AttributeNotFoundException
+     * @throws InterruptedException
+     */
     private void writeLatencyData(String host, String port) throws IOException, MalformedObjectNameException, InstanceNotFoundException, IntrospectionException, ReflectionException, MBeanException, AttributeNotFoundException, InterruptedException {
         MBeanServerConnection mbeanConn = CommonUtility.getmBeanServerConnection(host, port);
         List<Latency> result = new ArrayList<>();
@@ -87,6 +103,19 @@ public class LatencyScheduler {
 
     }
 
+    /**
+     *
+     * @param mbeanConn
+     * @param result
+     * @param node
+     * @throws MalformedObjectNameException
+     * @throws InstanceNotFoundException
+     * @throws IntrospectionException
+     * @throws ReflectionException
+     * @throws IOException
+     * @throws MBeanException
+     * @throws AttributeNotFoundException
+     */
     public void getLatencyMetric(MBeanServerConnection mbeanConn, List<Latency> result, String node) throws MalformedObjectNameException, InstanceNotFoundException, IntrospectionException, ReflectionException, IOException, MBeanException, AttributeNotFoundException {
         try {
 
@@ -132,6 +161,19 @@ public class LatencyScheduler {
         }
     }
 
+    /**
+     *
+     * @param mbeanConn
+     * @param node
+     * @param mbeanRangeLatency
+     * @param mbeanTotalRangeLatency
+     * @param latency
+     * @throws MBeanException
+     * @throws AttributeNotFoundException
+     * @throws InstanceNotFoundException
+     * @throws ReflectionException
+     * @throws IOException
+     */
     private void getRangeLatencyData(MBeanServerConnection mbeanConn, String node, ObjectName mbeanRangeLatency, ObjectName mbeanTotalRangeLatency, Latency latency) throws MBeanException, AttributeNotFoundException, InstanceNotFoundException, ReflectionException, IOException {
         Long rangeLatency = (Long) mbeanConn.getAttribute(mbeanRangeLatency, Constants.COUNT);
         Long totalRangeLatency = (Long) mbeanConn.getAttribute(mbeanTotalRangeLatency, Constants.COUNT);
@@ -148,6 +190,19 @@ public class LatencyScheduler {
         resultMap.put(node + Constants.PREVIOUS_TOTAL_RANGE_LATENCY, totalRangeLatency);
     }
 
+    /**
+     *
+     * @param mbeanConn
+     * @param node
+     * @param mbeanWriteLatency
+     * @param mbeanTotalWriteLatency
+     * @param latency
+     * @throws MBeanException
+     * @throws AttributeNotFoundException
+     * @throws InstanceNotFoundException
+     * @throws ReflectionException
+     * @throws IOException
+     */
     private void getWriteLatencyData(MBeanServerConnection mbeanConn, String node, ObjectName mbeanWriteLatency, ObjectName mbeanTotalWriteLatency, Latency latency) throws MBeanException, AttributeNotFoundException, InstanceNotFoundException, ReflectionException, IOException {
         Long writeLatency = (Long) mbeanConn.getAttribute(mbeanWriteLatency, Constants.COUNT);
         Long totalWriteLatency = (Long) mbeanConn.getAttribute(mbeanTotalWriteLatency, Constants.COUNT);
@@ -165,6 +220,19 @@ public class LatencyScheduler {
         resultMap.put(node + Constants.PREVIOUS_TOTAL_WRITE_LATENCY, totalWriteLatency);
     }
 
+    /**
+     *
+     * @param mbeanConn
+     * @param node
+     * @param mbeanReadLatency
+     * @param mbeanTotalReadLatency
+     * @param latency
+     * @throws MBeanException
+     * @throws AttributeNotFoundException
+     * @throws InstanceNotFoundException
+     * @throws ReflectionException
+     * @throws IOException
+     */
     private void getReadLatencyData(MBeanServerConnection mbeanConn, String node, ObjectName mbeanReadLatency, ObjectName mbeanTotalReadLatency, Latency latency) throws MBeanException, AttributeNotFoundException, InstanceNotFoundException, ReflectionException, IOException {
         Long readLatency = (Long) mbeanConn.getAttribute(mbeanReadLatency, Constants.COUNT);
         Long totalReadLatency = (Long) mbeanConn.getAttribute(mbeanTotalReadLatency, Constants.COUNT);

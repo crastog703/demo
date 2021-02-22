@@ -22,6 +22,9 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 @Component
+/**
+ *
+ */
 public class GCPauseSchedulerWithJmx {
 
     static Map<Object, Object> resultMap = new HashMap<>();
@@ -63,6 +66,19 @@ public class GCPauseSchedulerWithJmx {
 
     }
 
+    /**
+     *
+     * @param host
+     * @param port
+     * @throws IOException
+     * @throws MalformedObjectNameException
+     * @throws InstanceNotFoundException
+     * @throws IntrospectionException
+     * @throws ReflectionException
+     * @throws MBeanException
+     * @throws AttributeNotFoundException
+     * @throws InterruptedException
+     */
     private void gcPauseData(String host, String port) throws IOException, MalformedObjectNameException, InstanceNotFoundException, IntrospectionException, ReflectionException, MBeanException, AttributeNotFoundException, InterruptedException {
         MBeanServerConnection mbeanConn = CommonUtility.getmBeanServerConnection(host, port);
         List<GcInfo> result = new ArrayList<>();
@@ -103,6 +119,19 @@ public class GCPauseSchedulerWithJmx {
         }
     }
 
+    /**
+     *
+     * @param mbeanConn
+     * @param result
+     * @param node
+     * @throws MalformedObjectNameException
+     * @throws InstanceNotFoundException
+     * @throws IntrospectionException
+     * @throws ReflectionException
+     * @throws IOException
+     * @throws MBeanException
+     * @throws AttributeNotFoundException
+     */
     public void getGcPauseMetric(MBeanServerConnection mbeanConn, List<GcInfo> result, String node) throws MalformedObjectNameException, InstanceNotFoundException, IntrospectionException, ReflectionException, IOException, MBeanException, AttributeNotFoundException {
         try {
 
@@ -128,6 +157,12 @@ public class GCPauseSchedulerWithJmx {
         }
     }
 
+    /**
+     *
+     * @param concurrentMarkSweep
+     * @param result
+     * @param node
+     */
     private void processConcurrentMarkSweep(GcInfo concurrentMarkSweep, List<GcInfo> result, String node) {
         if (concurrentMarkSweep != null) {
 
@@ -155,6 +190,12 @@ public class GCPauseSchedulerWithJmx {
 
     }
 
+    /**
+     *
+     * @param parNew
+     * @param result
+     * @param node
+     */
     private void processParNew(GcInfo parNew, List<GcInfo> result, String node) {
         if (parNew != null) {
 

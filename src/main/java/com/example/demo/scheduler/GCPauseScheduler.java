@@ -21,6 +21,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
 @Component
+/**
+ *
+ */
 public class GCPauseScheduler {
 
     public static Map<String, Long> lastKnownPositions = new HashMap<>();
@@ -60,6 +63,9 @@ public class GCPauseScheduler {
 
 
     @Scheduled(fixedRateString = "${gc.pause.scheduler.time}")
+    /**
+     *
+     */
     public void perform() throws Exception {
         if (false) {
             ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(logFilePath.length);
@@ -81,6 +87,19 @@ public class GCPauseScheduler {
 
     }
 
+    /**
+     *
+     * @param logPath
+     * @param host
+     * @throws IOException
+     * @throws MalformedObjectNameException
+     * @throws InstanceNotFoundException
+     * @throws IntrospectionException
+     * @throws ReflectionException
+     * @throws MBeanException
+     * @throws AttributeNotFoundException
+     * @throws InterruptedException
+     */
     private void gcPauseData(String logPath, String host) throws IOException, MalformedObjectNameException, InstanceNotFoundException, IntrospectionException, ReflectionException, MBeanException, AttributeNotFoundException, InterruptedException {
 
         List<String> result = new ArrayList<>();
@@ -119,6 +138,13 @@ public class GCPauseScheduler {
 
     }
 
+    /**
+     *
+     * @param result
+     * @param logPath
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public void getGCPauseMetric(List<String> result, String logPath) throws FileNotFoundException, IOException {
         try {
             File file = getFile(logPath);

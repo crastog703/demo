@@ -21,6 +21,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
 @Component
+/**
+ *
+ */
 public class ErrorRateSchedulerWithConfig {
     private static final Map<Object, Object> errorMap = new HashMap<>();
     @Value("#{'${hosts}'.split(',')}")
@@ -48,6 +51,9 @@ public class ErrorRateSchedulerWithConfig {
     }
 
     @Scheduled(fixedRateString = "${error.scheduler.time}")
+    /**
+     *
+     */
     public void perform() throws Exception {
         if (errorRateSchedulerEnable) {
 
@@ -70,6 +76,19 @@ public class ErrorRateSchedulerWithConfig {
         }
     }
 
+    /**
+     *
+     * @param host
+     * @param port
+     * @throws IOException
+     * @throws MalformedObjectNameException
+     * @throws InstanceNotFoundException
+     * @throws IntrospectionException
+     * @throws ReflectionException
+     * @throws MBeanException
+     * @throws AttributeNotFoundException
+     * @throws InterruptedException
+     */
     private void errorRateData(String host, String port) throws IOException, MalformedObjectNameException, InstanceNotFoundException, IntrospectionException, ReflectionException, MBeanException, AttributeNotFoundException, InterruptedException {
         MBeanServerConnection mbeanConn = CommonUtility.getmBeanServerConnection(host, port);
         List<Map<Object, Object>> result = new ArrayList<>();
@@ -104,6 +123,20 @@ public class ErrorRateSchedulerWithConfig {
 
     }
 
+    /**
+     *
+     * @param mbeanConn
+     * @param result
+     * @param resultMap
+     * @param node
+     * @throws MalformedObjectNameException
+     * @throws InstanceNotFoundException
+     * @throws IntrospectionException
+     * @throws ReflectionException
+     * @throws IOException
+     * @throws MBeanException
+     * @throws AttributeNotFoundException
+     */
     private void getFailureMetric(MBeanServerConnection mbeanConn, List<Map<Object, Object>> result, Map<Object, Object> resultMap, String node) throws MalformedObjectNameException, InstanceNotFoundException, IntrospectionException, ReflectionException, IOException, MBeanException, AttributeNotFoundException {
 
         Map<Object, Object> resultMetric = new HashMap<>();

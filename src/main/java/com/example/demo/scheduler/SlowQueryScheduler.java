@@ -21,6 +21,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
 @Component
+/**
+ *
+ */
 public class SlowQueryScheduler {
 
     public static final String SLOW_QUERY_FILTER = "slow timeout";
@@ -45,6 +48,11 @@ public class SlowQueryScheduler {
 
     }
 
+    /**
+     *
+     * @param path
+     * @return
+     */
     public Long getLastKnownPosition(String path) {
         if (lastKnownPositions.containsKey(path)) {
             return lastKnownPositions.get(path);
@@ -57,7 +65,10 @@ public class SlowQueryScheduler {
 
     }
 
-
+    /**
+     *
+     * @throws Exception
+     */
     @Scheduled(fixedRateString = "${slow.query.scheduler.time}")
     public void perform() throws Exception {
         if (slowQuerySchedulerEnable) {
@@ -79,6 +90,18 @@ public class SlowQueryScheduler {
 
     }
 
+    /**
+     *
+     * @param logPath
+     * @throws IOException
+     * @throws MalformedObjectNameException
+     * @throws InstanceNotFoundException
+     * @throws IntrospectionException
+     * @throws ReflectionException
+     * @throws MBeanException
+     * @throws AttributeNotFoundException
+     * @throws InterruptedException
+     */
     private void slowQueryData(String logPath) throws IOException, MalformedObjectNameException, InstanceNotFoundException, IntrospectionException, ReflectionException, MBeanException, AttributeNotFoundException, InterruptedException {
 
         List<String> result = new ArrayList<>();
@@ -117,6 +140,13 @@ public class SlowQueryScheduler {
 
     }
 
+    /**
+     *
+     * @param result
+     * @param logPath
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public void getSlowQueryMetric(List<String> result, String logPath) throws FileNotFoundException, IOException {
         try {
             File file = getFile(logPath);
