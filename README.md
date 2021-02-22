@@ -21,7 +21,7 @@
     1) Copy the jar to server to particular directory
     2) From command line move to that particular directory where jar is copied
     3) Execute the following command on the command line:
-    "$ java -jar your-app.jar"
+       "$ java -jar your-app.jar"
 
 
 
@@ -42,3 +42,4 @@
        to collect slow query in cassandra
 
     4) https://www.baeldung.com/spring-boot-app-as-a-service to deploy application
+
