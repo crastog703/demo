@@ -40,4 +40,4 @@
 
        to collect slow query in cassandra
 
-    4) <https://www.baeldung.com/spring-boot-app-as-a-service> to deploy application
+    4) [https://www.baeldung.com/spring-boot-app-as-a-service] to deploy application
