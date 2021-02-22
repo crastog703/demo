@@ -1,7 +1,7 @@
 # Cassandra: Get Read, Write and Range latency, GC Pauses, Slow query and Error Rate
 
 
-## Problem Statement
+## Problem Statement --
 Given a list of nodes in a cluster, go and poll the metrics via JMX from each node. Find out the following: 
 1) Identify slow running queries (queries that take more than 1 sec to execute) and GC pauses for more than 5 sec, and append them in a file every 15 min. 
 2) Record error rates for reads and writes per table and per node. Append them in a file every 10 min. 
@@ -20,7 +20,7 @@ Given a list of nodes in a cluster, go and poll the metrics via JMX from each no
 1) Copy the jar to server to particular directory
 2) From command line move to that particular directory where jar is copied
 3) Execute the following command on the command line:
-    $ java -jar your-app.jar
+    "$ java -jar your-app.jar"
 
 
 
