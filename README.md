@@ -13,6 +13,7 @@
     2) Jmx port should be accessible from where application is deployed
     3) For checking slow query cassandra debug log  of each node should be accessible from where application is deployed
     4) Configure application.property output path and input path
+    5) Apache Cassandra version must be greater 3.10 and we need to set slow_query_log_timeout_in_ms in cassandra.yaml
 
 
 
