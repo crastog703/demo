@@ -1,8 +1,8 @@
 package com.example.demo.model;
 
 public class Latency {
-    Long readLatency;
-    Long totalReadLatency;
+    Double readLatency;
+    Double totalReadLatency;
 
     public Long getEpoch() {
         return epoch;
@@ -12,62 +12,62 @@ public class Latency {
         this.epoch = epoch;
     }
 
-    Long writeLatency;
+    Double writeLatency;
 
 
 
-    Long TotalWriteLatency;
-    Long rangeLatency;
+    Double TotalWriteLatency;
+    Double rangeLatency;
     Long epoch;
 
-    public Long getReadLatency() {
+    public Double getReadLatency() {
         return readLatency;
     }
 
-    public void setReadLatency(Long readLatency) {
+    public void setReadLatency(Double readLatency) {
         this.readLatency = readLatency;
     }
 
-    public Long getTotalReadLatency() {
+    public Double getTotalReadLatency() {
         return totalReadLatency;
     }
 
-    public void setTotalReadLatency(Long totalReadLatency) {
+    public void setTotalReadLatency(Double totalReadLatency) {
         this.totalReadLatency = totalReadLatency;
     }
 
-    public Long getWriteLatency() {
+    public Double getWriteLatency() {
         return writeLatency;
     }
 
-    public void setWriteLatency(Long writeLatency) {
+    public void setWriteLatency(Double writeLatency) {
         this.writeLatency = writeLatency;
     }
 
-    public Long getTotalWriteLatency() {
+    public Double getTotalWriteLatency() {
         return TotalWriteLatency;
     }
 
-    public void setTotalWriteLatency(Long totalWriteLatency) {
+    public void setTotalWriteLatency(Double totalWriteLatency) {
         TotalWriteLatency = totalWriteLatency;
     }
 
-    public Long getRangeLatency() {
+    public Double getRangeLatency() {
         return rangeLatency;
     }
 
-    public void setRangeLatency(Long rangeLatency) {
+    public void setRangeLatency(Double rangeLatency) {
         this.rangeLatency = rangeLatency;
     }
 
-    public Long getTotalRangeLatency() {
+    public Double getTotalRangeLatency() {
         return totalRangeLatency;
     }
 
-    public void setTotalRangeLatency(Long totalRangeLatency) {
+    public void setTotalRangeLatency(Double totalRangeLatency) {
         this.totalRangeLatency = totalRangeLatency;
     }
 
-    Long totalRangeLatency;
+    Double totalRangeLatency;
 
 }

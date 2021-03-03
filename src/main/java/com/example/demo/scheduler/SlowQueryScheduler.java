@@ -35,6 +35,7 @@ public class SlowQueryScheduler {
     private Boolean slowQuerySchedulerEnable;
     @Value("${slowquery.file.path}")
     private String slowQueryFilePath;
+    Map<String, Boolean> isFirstRead = new HashMap<>();
 
     public File getFile(String path) {
         if (files.containsKey(path)) {
@@ -43,6 +44,16 @@ public class SlowQueryScheduler {
             File temp = new File(path);
             files.put(path, temp);
             return temp;
+        }
+
+
+    }
+    public boolean getFirstRead(String path) {
+        if (isFirstRead.containsKey(path)) {
+            return isFirstRead.get(path);
+        } else {
+            isFirstRead.put(path, false);
+            return true;
         }
 
 
@@ -154,11 +165,13 @@ public class SlowQueryScheduler {
 
 
             long fileLength = file.length();
+
             if (fileLength > lastKnownPosition) {
 
                 // Reading and writing file
                 RandomAccessFile readWriteFileAccess = new RandomAccessFile(file, "rw");
                 readWriteFileAccess.seek(lastKnownPosition);
+                boolean logpathFirstRead=getFirstRead(logPath);
                 String logLine = "";
                 while ((logLine = readWriteFileAccess.readLine()) != null) {
                     if (logLine.contains(SLOW_QUERY_FILTER)) {
